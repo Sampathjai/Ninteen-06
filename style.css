@@ -1,0 +1,169 @@
+/* Basic reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #e6f6e5; font-family: 'Montserrat', system-ui, sans-serif; color: #0b1a12; padding: 18px; }
+
+/* Main page wrapper */
+.page { max-width: 1100px; margin: 0 auto; }
+
+/* ============ LOGO / ARCH SECTION ============ */
+.logo-section { position: relative; margin-bottom: 36px; }
+
+/* big arch container */
+.arch { position: relative; height: 420px; display:flex; align-items:flex-start; justify-content:center; overflow:visible; }
+
+/* The arch stroke (gold) - centered and rounded */
+.arch-stroke {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 420px;
+  border-radius: 50%/40% 40% 0 0;
+  border: 7px solid #8b6b3a;
+  background: transparent;
+  z-index: 1;
+}
+
+/* Branding block centered inside arch */
+.branding {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-top: 28px;
+  width: 78%;
+}
+
+.brand-small { font-weight: 800; letter-spacing: 6px; margin-bottom: 8px; font-size: 16px; }
+.brand-big { font-family: 'Playfair Display', serif; font-size: 80px; line-height: 0.88; margin: 8px 0; }
+.brand-tag { font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+.brand-sub { font-weight: 800; font-size: 36px; letter-spacing: 2px; margin-top: 6px; }
+
+/* Brownie image inside the arch (centered) */
+.arch-image {
+  position: absolute;
+  z-index: 2;                 /* above arch interior but below arch stroke if needed */
+  bottom: 22px;               /* places image inside arch area and slightly above bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arch-image img {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  background: #fff;
+  display: block;
+}
+
+/* Ensure the arch-stroke remains visible above image bottom line */
+.arch-stroke { box-shadow: 0 0 0 1px rgba(139,107,58,0.02) inset; }
+
+/* ============ MENU SECTION (below the arch) ============ */
+.menu-section { margin-top: 22px; }
+
+/* rounded inside menu box to visually match poster */
+.menu-box {
+  background: #dfeed8;
+  border-radius: 20px;
+  border: 6px solid #8b6b3a;
+  padding: 22px 28px;
+  box-shadow: inset 0 0 0 8px rgba(214,226,209,0.18);
+}
+
+/* top price headers */
+.price-headers {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 120px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+  color: #0b1a12;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.price-headers::after {
+  content: "";
+  grid-column: 1 / -1;
+  height: 2px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, transparent, rgba(139,107,58,0.5), transparent);
+  display: block;
+}
+
+/* Grid rows: names + 3 price columns */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 120px;
+  gap: 10px 20px;
+}
+
+.name {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(11,26,18,0.06);
+}
+
+.name h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.name .desc {
+  font-size: 13px;
+  color: rgba(11,26,18,0.7);
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.price {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:18px;
+  border-bottom: 1px solid rgba(11,26,18,0.04);
+}
+
+/* decorative bottom line and footer */
+.bottom-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(139,107,58,0.5), transparent);
+  margin: 20px 0 12px;
+}
+
+.footer-note p {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+.contact-row { display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:10px; }
+.whatsapp { background:#0ebe57; color:#fff; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:800; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .brand-big { font-size: 76px; }
+  .arch { height: 300px; }
+  .arch-stroke { height: 300px; }
+  .arch-image { width: 120px; height:120px; bottom: 18px; }
+  .price-headers, .menu-grid { grid-template-columns: 1fr 90px 90px 90px; }
+}
+@media (max-width: 600px) {
+  .brand-big { font-size: 56px; }
+  .arch { height: 240px; }
+  .arch-stroke { height: 240px; }
+  .arch-image { width: 100px; height:100px; bottom: 12px; }
+  .price-headers, .menu-grid { grid-template-columns: 1fr 70px 70px 70px; }
+  .contact-row { flex-direction: column; }
+}
